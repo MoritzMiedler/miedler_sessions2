@@ -33,7 +33,7 @@ export default {
   async created() {
     let result = await axios({
       method: 'get',
-      url: 'http://127.0.0.1:3000/secretdata',
+      url: '/secretdata',
     });
     // this.prime = result.data.
     this.prime = result.data;

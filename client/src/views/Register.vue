@@ -39,7 +39,7 @@ export default {
     async register() {
       let result = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:3000/register',
+        url: '/register',
         'content-type': 'application/json',
         data: {
           name: this.name,
