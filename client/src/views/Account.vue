@@ -35,7 +35,6 @@ export default {
       method: 'get',
       url: '/secretdata',
     });
-    // this.prime = result.data.
     this.prime = result.data;
     this.user.id = localStorage.getItem('id');
     this.user.name = localStorage.getItem('name');
