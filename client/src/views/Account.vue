@@ -19,7 +19,7 @@
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -31,7 +31,11 @@ export default {
     };
   },
   async created() {
-    // enter your code here
+    let result = await axios({
+      method: 'get',
+      url: 'http://127.0.0.1:3000/secretdata',
+    });
+    console.log(result);
   },
 };
 </script>

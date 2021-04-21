@@ -28,7 +28,16 @@ router.post('/register', (req, res) => {
     if (users.find(el => el.email == email)) {
       res.status(409).send('Email already registered');
     } else {
-      users.forEach(element => {});
+      let highestid = 0;
+      for (let i of users) {
+        if (i.id > highestid) {
+          highestid = i.id;
+        }
+      }
+      let newid = highestid + 1;
+
+      users.push({ id: newid, name: name, email: email, password: password });
+      res.status(200).send('user created');
     }
   } else {
     res.status(400).send('Registration failed');
@@ -36,7 +45,7 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/secretdata', (req, res) => {
-  // enter your code here
+  return res.status(200).end('the prime number is 2305843009213693951');
 });
 
 module.exports = router;

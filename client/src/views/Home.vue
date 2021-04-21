@@ -54,6 +54,9 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    this.user.id = localStorage.getItem('id');
+    this.user.name = localStorage.getItem('name');
+  },
 };
 </script>
