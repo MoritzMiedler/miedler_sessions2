@@ -13,6 +13,10 @@ router.post('/login', (req, res) => {
     } else res.status(401).send('Wrong email or password');
   } else res.status(400).send('Login failed');
 });
+const redirectLogin = (req, res, next) => {
+  if (!req.session.userId) res.status(400).send('You are not logged in!');
+  else next();
+};
 
 router.get('/logout', redirectLogin, (req, res) => {
   req.session.destroy();
@@ -49,5 +53,3 @@ router.get('/secretdata', (req, res) => {
 });
 
 module.exports = router;
-
-function redirectLogin() {}
