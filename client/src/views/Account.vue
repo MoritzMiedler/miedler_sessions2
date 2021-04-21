@@ -35,7 +35,10 @@ export default {
       method: 'get',
       url: 'http://127.0.0.1:3000/secretdata',
     });
-    console.log(result);
+    // this.prime = result.data.
+    this.prime = result.data;
+    this.user.id = localStorage.getItem('id');
+    this.user.name = localStorage.getItem('name');
   },
 };
 </script>

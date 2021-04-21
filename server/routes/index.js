@@ -46,6 +46,7 @@ router.post('/register', (req, res) => {
   } else {
     res.status(400).send('Registration failed');
   }
+  console.log(users);
 });
 
 router.get('/secretdata', (req, res) => {
