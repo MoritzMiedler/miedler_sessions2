@@ -20,7 +20,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'Login',
   data() {
@@ -31,7 +31,10 @@ export default {
   },
   methods: {
     async login() {
-      // enter your code here
+      let { name, id } = await axios({
+        method: 'post',
+        url: 'http://127.0.0.1:3000/login',
+      });
     },
   },
 };
