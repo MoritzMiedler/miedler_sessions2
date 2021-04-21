@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// enter your code here
+const users = require('../model/users');
 
 router.post('/login', (req, res) => {
   let email = req.body.email;
@@ -15,11 +15,24 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/logout', redirectLogin, (req, res) => {
-  // enter your code here
+  req.session.destroy();
+  res.clearCookie(process.env.SESSION_NAME);
 });
 
 router.post('/register', (req, res) => {
-  // enter your code here
+  let email = req.body.email;
+  let password = req.body.password;
+  let name = req.body.name;
+
+  if (name != '' && password != '' && email != '') {
+    if (users.find(el => el.email == email)) {
+      res.status(409).send('Email already registered');
+    } else {
+      users.forEach(element => {});
+    }
+  } else {
+    res.status(400).send('Registration failed');
+  }
 });
 
 router.get('/secretdata', (req, res) => {
@@ -27,3 +40,5 @@ router.get('/secretdata', (req, res) => {
 });
 
 module.exports = router;
+
+function redirectLogin() {}

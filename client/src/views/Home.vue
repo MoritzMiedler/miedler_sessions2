@@ -54,8 +54,6 @@ export default {
       },
     };
   },
-  created() {
-    // enter your code here
-  },
+  created() {},
 };
 </script>

@@ -31,10 +31,18 @@ export default {
   },
   methods: {
     async login() {
-      let { name, id } = await axios({
+      let result = await axios({
         method: 'post',
         url: 'http://127.0.0.1:3000/login',
+        'content-type': 'application/json',
+        data: {
+          email: this.email,
+          password: this.password,
+        },
       });
+      localStorage.setItem('name', result.data.name);
+      localStorage.setItem('id', result.data.id);
+      this.$router.push({ name: 'Home' });
     },
   },
 };
